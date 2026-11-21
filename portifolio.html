@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Franciel Luiz | Desenvolvedor Front-end</title>
+<meta name="description" content="Portfólio de Franciel Luiz, desenvolvedor Front-end com React, HTML e CSS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000;
+  --surface:#141010;
+  --line:#2e2222;
+  --red:#ff3131;
+  --red-dark:#d11f1f;
+  --text:#f4efef;
+  --muted:#b9aeae;
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--text);font-family:"Sora",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65;font-size:1rem}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.container{width:100%;max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* Cabeçalho */
+header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800}
+.brand svg{width:48px;height:48px;flex:none}
+.nav ul{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
+.nav ul a{color:var(--red);font-weight:600;padding:6px 0;border-bottom:2px solid transparent;transition:border-color .2s}
+.nav ul a:hover{border-color:var(--red)}
+
+/* Hero */
+.hero{display:flex;align-items:center;justify-content:space-between;gap:56px;padding:72px 0 88px}
+.hero-text{flex:1 1 420px}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;font-weight:800;margin-bottom:20px}
+.hero h1 span{color:var(--red)}
+.hero p{color:var(--muted);max-width:52ch;margin-bottom:32px}
+.buttons{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 32px;border-radius:var(--radius);font-weight:800;background:var(--red);color:#000;border:2px solid var(--red);transition:background .2s,color .2s,transform .2s}
+.btn:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.btn.ghost{background:transparent;color:var(--red)}
+.btn.ghost:hover{background:var(--red);color:#000}
+.photo{flex:0 1 340px;display:flex;justify-content:center}
+.photo img{width:100%;max-width:340px;aspect-ratio:4/5;object-fit:cover;border:6px solid #fff;border-radius:6px;box-shadow:14px 14px 0 var(--red)}
+
+/* Seções */
+section{padding:72px 0}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;margin-bottom:12px}
+h2::after{content:"";display:block;width:56px;height:4px;background:var(--red);margin-top:12px;border-radius:2px}
+.lead{color:var(--muted);max-width:60ch;margin:20px 0 0}
+.about{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start}
+.about>div{flex:1 1 320px}
+.skills{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin-top:24px}
+.skills li{border:1px solid var(--red);color:var(--red);padding:6px 16px;border-radius:999px;font-size:.9rem;font-weight:600}
+
+/* Projetos */
+.projects{display:flex;flex-wrap:wrap;gap:28px;margin-top:40px}
+.card{flex:1 1 300px;max-width:100%;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.thumb{aspect-ratio:16/9;background:linear-gradient(135deg,var(--red) 0%,#5a0c0c 100%);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;color:#000}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.card-body{display:flex;flex-direction:column;gap:12px;padding:24px;flex:1}
+.card h3{font-size:1.2rem}
+.card p{color:var(--muted);font-size:.95rem}
+.card strong{color:var(--text)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+.tags li{background:#2a1414;color:#ff8a8a;padding:3px 12px;border-radius:999px;font-size:.8rem;font-weight:600}
+.card .btn{margin-top:auto;padding:10px 20px;font-size:.9rem;align-self:flex-start}
+
+/* Contato */
+.contact{text-align:center}
+.contact h2::after{margin-left:auto;margin-right:auto}
+.contact .lead{margin-left:auto;margin-right:auto}
+.contact .buttons{justify-content:center;margin-top:32px}
+footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:var(--muted);font-size:.9rem}
+
+/* Responsivo */
+@media (max-width:760px){
+  .nav{flex-direction:column;padding:12px 16px}
+  .nav ul{gap:18px;justify-content:center}
+  .hero{flex-direction:column-reverse;gap:40px;padding:40px 0 56px;text-align:center}
+  .hero p{margin-left:auto;margin-right:auto}
+  .buttons{justify-content:center}
+  .photo img{max-width:260px;box-shadow:10px 10px 0 var(--red)}
+  section{padding:56px 0}
+  h2::after{margin-left:auto;margin-right:auto}
+  h2,.lead{text-align:center}
+  .lead{margin-left:auto;margin-right:auto}
+  .skills{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Franciel Luiz, início">
+      <!-- Logotipo: lobo estilizado + iniciais FL (edite as cores no SVG, se quiser) -->
+      <svg viewBox="0 0 100 100" role="img" aria-label="Logotipo FL">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffb347"/>
+            <stop offset="1" stop-color="#ff3131"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="47" fill="url(#g)" stroke="#fff" stroke-width="3"/>
+        <path d="M20 22 L38 36 L62 36 L80 22 L78 52 L64 72 L50 82 L36 72 L22 52 Z" fill="#000"/>
+        <path d="M36 52 L44 56 L42 60 Z M64 52 L56 56 L58 60 Z" fill="#ff3131"/>
+        <path d="M46 72 L50 78 L54 72 Z" fill="#ff3131"/>
+        <text x="50" y="96" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="700" fill="#fff" stroke="#000" stroke-width=".5">FL</text>
+      </svg>
+      <span>Franciel Luiz</span>
+    </a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#sobre">Sobre mim</a></li>
+        <li><a href="#projetos">Meus projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <section class="hero" id="home" style="padding-top:72px">
+      <div class="hero-text">
+        <h1>Olá! Eu sou <span>Franciel Luiz</span>, desenvolvedor Front-end.</h1>
+        <p>Trabalho com React, HTML e CSS para transformar boas ideias em sites rápidos, claros e responsivos. Ajudo pequenos negócios e designers a colocarem projetos em prática.</p>
+        <div class="buttons">
+          <a class="btn" href="#projetos">Ver projetos</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/SEU-USUARIO" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn ghost" href="https://github.com/SEU-USUARIO" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+      <div class="photo">
+        <!-- Salve sua foto como foto.jpg na mesma pasta deste arquivo -->
+        <img src="foto.jpg" alt="Foto de Franciel Luiz" width="340" height="425">
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <section id="sobre">
+      <h2>Sobre mim</h2>
+      <div class="about">
+        <div>
+          <p class="lead" style="margin-top:8px">Sou desenvolvedor Front-end e gosto de construir interfaces simples de usar e bem organizadas. Estou sempre estudando para entregar código limpo, acessível e que funcione bem em qualquer tela.</p>
+        </div>
+        <div>
+          <p style="color:var(--muted)">Tecnologias com as quais trabalho:</p>
+          <ul class="skills">
+            <li>React</li><li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>Flexbox</li><li>Git e GitHub</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <section id="projetos">
+      <h2>Meus projetos</h2>
+      <p class="lead">Alguns trabalhos acadêmicos e pessoais. Cada card traz o objetivo, as tecnologias e o link do código.</p>
+
+      <div class="projects">
+        <!-- PROJETO 1: troque nome, texto, imagem e link -->
+        <article class="card">
+          <div class="thumb">
+            <img src="img/projeto1.jpg" alt="Captura de tela da landing page" onerror="this.remove()">
+          </div>
+          <div class="card-body">
+            <h3>Landing page para pequeno negócio</h3>
+            <p><strong>Objetivo:</strong> apresentar os serviços de um negócio local com layout responsivo e botão de contato direto.</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>Flexbox</li></ul>
+            <a class="btn" href="https://github.com/SEU-USUARIO/projeto-landing-page" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+          </div>
+        </article>
+
+        <!-- PROJETO 2 -->
+        <article class="card">
+          <div class="thumb">
+            <img src="img/projeto2.jpg" alt="Captura de tela do app de tarefas" onerror="this.remove()">
+          </div>
+          <div class="card-body">
+            <h3>Lista de tarefas em React</h3>
+            <p><strong>Objetivo:</strong> praticar componentes, estado e eventos criando um app para adicionar, concluir e remover tarefas.</p>
+            <ul class="tags"><li>React</li><li>JavaScript</li><li>CSS</li></ul>
+            <a class="btn" href="https://github.com/SEU-USUARIO/lista-de-tarefas" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+          </div>
+        </article>
+
+        <!-- PROJETO 3 -->
+        <article class="card">
+          <div class="thumb">
+            <img src="img/projeto3.jpg" alt="Captura de tela do portfólio" onerror="this.remove()">
+          </div>
+          <div class="card-body">
+            <h3>Este portfólio</h3>
+            <p><strong>Objetivo:</strong> reunir minha apresentação, projetos e contatos em um site leve, que funciona em celular e computador.</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>GitHub Pages</li></ul>
+            <a class="btn" href="https://github.com/SEU-USUARIO/SEU-REPOSITORIO" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <section class="contact" id="contato">
+      <h2>Vamos conversar?</h2>
+      <p class="lead">Tem um projeto ou uma ideia? Me chame pelo LinkedIn ou veja meu código no GitHub.</p>
+      <div class="buttons">
+        <a class="btn" href="https://www.linkedin.com/in/SEU-USUARIO" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/SEU-USUARIO" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="container">© 2026 Franciel Luiz. Feito com HTML e CSS.</div>
+</footer>
+
+</body>
+</html>
